@@ -37,3 +37,30 @@ function init() {
   winner = null;
   render();
 }
+
+function render() {
+  boardState.forEach((square, index) => {
+    squares[index].textContent = square === 1 ? 'X' : square === -1 ? 'O' : '';
+  });
+  if (winner) {
+    if (winner === 'T') {
+      message.innerText = 'It\'s a tie!';
+    } else {
+      message.innerText = `Player ${players[winner].toUpperCase()} wins!`;
+    }
+    winMessage.classList.remove('hide');
+  } else {
+    winMessage.classList.add('hide');
+  }
+  message.classList.remove('x', 'circle');
+  message.classList.add(turn === 1 ? 'x' : 'circle');
+}
+
+function handleClick(e) {
+  const index = squares.indexOf(e.target);
+  if (boardState[index] || winner) return;
+  boardState[index] = turn;
+  turn *= -1;
+  winner = getWinner();
+  render();
+}
