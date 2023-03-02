@@ -64,3 +64,44 @@ function handleClick(e) {
   winner = getWinner();
   render();
 }
+
+function getWinner() {
+  for (let i = 0; i < winningCombos.length; i++) {
+    const [a, b, c] = winningCombos[i];
+    if (boardState[a] && boardState[a] === boardState[b] && boardState[a] === boardState[c]) {
+      return boardState[a];
+    }
+  }
+
+  if (boardState.every(square => square !== null)) {
+    return 'T';
+  }
+  return null;
+}
+
+function handleReset() {
+  init();
+}
+
+function handlePlay() {
+  modal.classList.add('hide');
+  init();
+}
+
+function handleMute() {
+  const bgMusic = document.getElementById('bgMusic');
+  if (isMuted) {
+    bgMusic.play();
+    isMuted = false;
+    muteButton.innerText = 'Mute';
+  } else {
+    bgMusic.pause();
+    isMuted = true;
+    muteButton.innerText = 'Unmute';
+  }
+}
+
+squares.forEach(square => square.addEventListener('click', handleClick));
+resetButton.addEventListener('click', handleReset);
+playButton.addEventListener('click', handlePlay);
+muteButton.addEventListener('click', handleMute);
