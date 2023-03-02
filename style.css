@@ -1,0 +1,148 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  background-color: #3C9AB6;
+  overflow: hidden;
+  position: relative;
+}
+
+.TicHeader{
+  text-align: center;
+  color: white;
+}
+
+#board {
+  display: flex;
+  width: 80vmin;
+  flex-wrap: wrap;
+  gap: 1vmin;
+  margin: 0 auto;
+}
+
+.square {
+  width: 25vmin;
+  height: 25vmin;
+  border: 1px solid rgb(25, 121, 152);
+  font-size: 4rem;
+  text-align: center;
+  line-height: 100px;
+  background-color: #eee;
+  border: 2px solid #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+@media only screen and (max-width: 600px) {
+  #board {
+    width: 90vw;
+  }
+  
+  .square {
+    font-size: 2rem;
+  }
+}
+
+.square:hover {
+  background-color: #ddd;
+}
+
+.square.x:before {
+  content: "X";
+  color: #333;
+}
+
+.square.circle:before {
+  content: "O";
+  color: #f9a828;
+}
+
+.winning-square {
+  background-color: #f9a828;
+  border-color: #f9a828;
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    background-color: #f9a828;
+    border-color: #f9a828;
+  }
+  to {
+    background-color: #fff;
+    border-color: #fff;
+  }
+}
+
+#winningMessage {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+}
+
+#modal h2 {
+  margin-top: 0;
+}
+
+#playButton {
+  background-color: #3C9AB6;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#playButton:hover {
+  background-color: #21677c;
+}
+
+.hide {
+  display: none;
+}
+#muteButton {
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.RButton {
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
